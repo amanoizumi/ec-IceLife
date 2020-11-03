@@ -100,6 +100,9 @@ const routes = [
       },
     ],
   },
+  {
+    path: '*', redirect: '/', // redirect 的功能是當使用者輸入不存在的路徑時，會自動導向至指定路徑。
+  },
 ];
 
 const router = new VueRouter({

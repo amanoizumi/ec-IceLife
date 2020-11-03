@@ -199,6 +199,7 @@
 import ScrollTopArrow from '@/components/ScrollTopArrow.vue';
 
 export default {
+  name: 'HomePage',
   components: {
     ScrollTopArrow,
   },

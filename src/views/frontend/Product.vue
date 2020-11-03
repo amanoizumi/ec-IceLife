@@ -122,6 +122,7 @@
 import SweetAlert from '@/utils/SweetAlert';
 
 export default {
+  name: 'Product',
   data() {
     return {
       status: {

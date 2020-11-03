@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'ScrollTopComponent',
   data() {
     return {
       visible: false,

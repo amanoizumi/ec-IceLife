@@ -28,6 +28,7 @@
 import SweetAlert from '@/utils/SweetAlert';
 
 export default {
+  name: 'RelatedProducts',
   data() {
     return {
       products: [],

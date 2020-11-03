@@ -80,6 +80,7 @@
 import SweetAlert from '@/utils/SweetAlert';
 
 export default {
+  name: 'WishList',
   data() {
     return {
       products: [],

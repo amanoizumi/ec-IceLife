@@ -12,6 +12,7 @@
 
 <script>
 export default {
+  name: 'CartIcon',
   data() {
     return {
       cartTotal: 0,

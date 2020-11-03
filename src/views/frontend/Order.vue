@@ -161,6 +161,7 @@
 import SweetAlert from '@/utils/SweetAlert';
 
 export default {
+  name: 'Order',
   data() {
     return {
       cart: {},

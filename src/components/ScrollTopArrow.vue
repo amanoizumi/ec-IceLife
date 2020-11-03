@@ -11,6 +11,7 @@
 import ScrollTopComponent from '@/components/ScrollTopComponent.vue';
 
 export default {
+  name: 'ScrollTopArrow',
   components: {
     ScrollTopComponent,
   },
