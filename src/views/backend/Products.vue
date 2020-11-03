@@ -354,6 +354,11 @@ export default {
         this.pagination = response.data.meta.pagination;
 
         this.isLoading = false;
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          '取得資料失敗Σ( ° △ °|||)︴',
+          'danger');
+        this.isLoading = false;
       });
     },
     getDetails(id) {
@@ -363,6 +368,11 @@ export default {
       this.$http.get(api).then((response) => {
         this.tempProduct = response.data.data;
         $('#productModal').modal('show');
+        this.isLoading = false;
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          '取得資料失敗Σ( ° △ °|||)︴',
+          'danger');
         this.isLoading = false;
       });
     },
@@ -446,6 +456,11 @@ export default {
           'success');
 
         this.getProducts();
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          '刪除失敗Σ( ° △ °|||)︴',
+          'danger');
+        this.isLoading = false;
       });
     },
     // 上傳檔案

@@ -192,6 +192,12 @@ export default {
       this.$http.patch(url, data).then(() => {
         this.isLoading = false;
         this.getCart();
+      }).catch(() => {
+        SweetAlert.fire({
+          title: '更新數量失敗!',
+          icon: 'error',
+        });
+        this.isLoading = false;
       });
     },
     removeCartItem(id) { // 刪除購物車內特定商品所以帶入 id
@@ -201,6 +207,12 @@ export default {
         this.isLoading = false;
         this.$bus.$emit('update-total');
         this.getCart();
+      }).catch(() => {
+        SweetAlert.fire({
+          title: '移除商品失敗!',
+          icon: 'error',
+        });
+        this.isLoading = false;
       });
     },
     removeAllCartItem() {
@@ -212,6 +224,12 @@ export default {
           this.isLoading = false;
           this.$bus.$emit('update-total');
           this.getCart();
+        }).catch(() => {
+          SweetAlert.fire({
+            title: '移除所有商品失敗!',
+            icon: 'error',
+          });
+          this.isLoading = false;
         });
     },
   },

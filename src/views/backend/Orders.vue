@@ -103,6 +103,11 @@ export default {
         this.pagination = response.data.meta.pagination;
 
         this.isLoading = false;
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          '取得資料失敗Σ( ° △ °|||)︴',
+          'danger');
+        this.isLoading = false;
       });
     },
     setOrderPaid(item) {
@@ -118,6 +123,11 @@ export default {
           'success');
 
         this.getOrders();
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          '付款狀態修改失敗Σ( ° △ °|||)︴',
+          'danger');
+        this.isLoading = false;
       });
     },
   },

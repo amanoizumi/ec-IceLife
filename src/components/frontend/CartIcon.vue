@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import SweetAlert from '@/utils/SweetAlert';
+
 export default {
   name: 'CartIcon',
   data() {
@@ -29,6 +31,12 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/ec/shopping`;
       this.$http.get(url).then((res) => {
         this.cartTotal = res.data.data.length;
+      }).catch(() => {
+        SweetAlert.fire({
+          text: '付款失敗',
+          icon: 'error',
+        });
+        this.isLoading = false;
       });
     },
   },

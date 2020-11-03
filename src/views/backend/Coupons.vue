@@ -290,6 +290,11 @@ export default {
         this.coupons = response.data.data;
 
         this.isLoading = false;
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          '取得資料失敗Σ( ° △ °|||)︴',
+          'danger');
+        this.isLoading = false;
       });
     },
     updateCoupon() {

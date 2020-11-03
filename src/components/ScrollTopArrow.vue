@@ -1,13 +1,10 @@
 <template>
-  <a @click="scrollTop" v-show="visible" class="bottom-right">
-    <div class="btn-scroll btn-cyan text-light border-0 shadow">
-      <i class="fas fa-chevron-up d-flex" ></i>
-    </div>
+  <a @click="scrollTop" v-show="visible" class="bottom-right shadow">
+    <i class="fas fa-chevron-up d-flex" ></i>
   </a>
 </template>
 
 <script>
-
 export default {
   name: 'ScrollTopArrow',
   data() {
@@ -39,22 +36,23 @@ export default {
 
 <style lang="scss">
 .bottom-right {
+  color: #ffffff;
   position: fixed;
   bottom: 45%;
   right: 20px;
   cursor: pointer;
-  text-decoration: none;
+  border-radius: 50%;
+  background-color: #C2185B;
+  padding: 25px;
+  font-size: 30px;
+  &:hover {
+    color: #ffffff;
+    background-color: #17A2B8;
+    text-decoration: none;
+  }
+  @media (max-width: 576px) {
+    display: none;
+  }
 }
-.btn-scroll {
-    border-radius: 50%;
-    background-color: #C2185B;
-    padding-top: 25px;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-bottom: 25px;
-    font-size: 30px;
-    @media (max-width: 576px) {
-      display: none;
-    }
-}
+
 </style>

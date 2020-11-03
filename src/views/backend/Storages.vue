@@ -124,6 +124,11 @@ export default {
         this.pagination = response.data.meta.pagination;
 
         this.isLoading = false;
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          '取得資料失敗Σ( ° △ °|||)︴',
+          'danger');
+        this.isLoading = false;
       });
     },
     openModel(item) {
@@ -146,6 +151,11 @@ export default {
         this.isLoading = false;
 
         this.getData();
+      }).catch(() => {
+        this.$bus.$emit('message:push',
+          '圖片刪除失敗Σ( ° △ °|||)︴',
+          'danger');
+        this.isLoading = false;
       });
     },
   },

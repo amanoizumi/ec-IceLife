@@ -9,7 +9,6 @@
         >
           <router-view
             v-if="checkSuccess"
-            :token="token"
           />
         </main>
       </div>
