@@ -86,7 +86,6 @@ export default {
       isNew: false,
       pagination: {},
       isLoading: false,
-      uuid: process.env.VUE_APP_UID,
     };
   },
   created() {
@@ -96,7 +95,7 @@ export default {
     getOrders(pages = 1) {
       this.isLoading = true;
 
-      const url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/orders?page=${pages}`;
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/orders?page=${pages}`;
 
       this.$http.get(url).then((response) => {
         this.orders = response.data.data;
@@ -111,10 +110,10 @@ export default {
       });
     },
     setOrderPaid(item) {
-      let url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/orders/${item.id}/paid`;
+      let url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/orders/${item.id}/paid`;
 
       if (!item.paid) {
-        url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/orders/${item.id}/unpaid`;
+        url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/orders/${item.id}/unpaid`;
       }
 
       this.$http.patch(url, item.id).then(() => {

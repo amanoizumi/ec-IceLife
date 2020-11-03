@@ -246,7 +246,6 @@ export default {
       due_time: '',
       status: '',
       isLoading: false,
-      uuid: process.env.VUE_APP_UID,
     };
   },
   created() {
@@ -284,30 +283,25 @@ export default {
     getCoupons() {
       this.isLoading = true;
 
-      const url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/coupons`;
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/coupons`;
 
       this.$http.get(url).then((response) => {
         this.coupons = response.data.data;
 
-        this.isLoading = false;
-      }).catch(() => {
-        this.$bus.$emit('message:push',
-          '取得資料失敗Σ( ° △ °|||)︴',
-          'danger');
         this.isLoading = false;
       });
     },
     updateCoupon() {
       this.isLoading = true;
 
-      let api = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/coupon`;
+      let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/coupon`;
       let httpMethod = '';
       let status = '新增成功!';
 
       if (this.status === 'created') {
         httpMethod = 'post';
       } else {
-        api = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/coupon/${this.tempCoupon.id}`;
+        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/coupon/${this.tempCoupon.id}`;
         status = '更新成功!';
         httpMethod = 'patch';
       }
@@ -333,7 +327,7 @@ export default {
     delCoupon() {
       this.isLoading = true;
 
-      const api = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/coupon/${this.tempCoupon.id}`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/coupon/${this.tempCoupon.id}`;
 
       this.$http.delete(api).then(() => {
         $('#delCouponModal').modal('hide');

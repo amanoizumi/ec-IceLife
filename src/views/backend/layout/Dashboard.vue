@@ -27,9 +27,7 @@ export default {
   data() {
     return {
       token: '',
-      uuid: process.env.VUE_APP_UID,
       checkSuccess: false,
-
     };
   },
   created() {
@@ -37,22 +35,22 @@ export default {
 
     const url = `${process.env.VUE_APP_APIPATH}/api/auth/check`;
 
-    // Axios 預設值
+    this.$http.post(url, { api_token: this.token })
+      .then((response) => {
+        if (!response.data.success) {
+          this.$router.push({
+            path: 'login',
+          });
+
+          this.$bus.$emit('message:push',
+            `出現錯誤惹，好糗Σ( ° △ °|||)︴
+              ${response.data.message}`,
+            'danger');
+        }
+        this.checkSuccess = true;
+      });
+    // Axios 預設值 放在驗證之後
     this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
-
-    this.$http.post(url, { api_token: this.token }).then((response) => {
-      if (!response.data.success) {
-        this.$router.push({
-          path: 'login',
-        });
-
-        this.$bus.$emit('message:push',
-          `出現錯誤惹，好糗Σ( ° △ °|||)︴
-            ${response.data.message}`,
-          'danger');
-      }
-      this.checkSuccess = true;
-    });
   },
 };
 </script>

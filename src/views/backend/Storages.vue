@@ -107,7 +107,6 @@ export default {
       tempData: {},
       pagination: {},
       isLoading: false,
-      uuid: process.env.VUE_APP_UID,
     };
   },
   created() {
@@ -117,7 +116,7 @@ export default {
     getData(page = 1) {
       this.isLoading = true;
 
-      const url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/storage?page=${page}`;
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/storage?page=${page}`;
 
       this.$http.get(url).then((response) => {
         this.storages = response.data.data;
@@ -139,7 +138,7 @@ export default {
     deleteData() {
       this.isLoading = true;
 
-      const url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/storage/${this.tempData.id}`;
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/storage/${this.tempData.id}`;
 
       this.$http.delete(url).then(() => {
         $('#deleteModal').modal('hide');

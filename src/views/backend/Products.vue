@@ -336,7 +336,6 @@ export default {
       status: {
         fileUploading: false,
       },
-      uuid: process.env.VUE_APP_UID,
     };
   },
   created() {
@@ -347,7 +346,7 @@ export default {
     getProducts(page = 1) {
       this.isLoading = true;
 
-      const api = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/products?page=${page}`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/products?page=${page}`;
 
       this.$http.get(api).then((response) => {
         this.products = response.data.data;
@@ -363,7 +362,7 @@ export default {
     },
     getDetails(id) {
       this.isLoading = true;
-      const api = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/product/${id}`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/product/${id}`;
 
       this.$http.get(api).then((response) => {
         this.tempProduct = response.data.data;
@@ -404,13 +403,13 @@ export default {
     // 上傳產品資料
     updateProduct() {
       // 新增商品
-      let api = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/product`;
+      let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/product`;
 
       let httpMethod = 'post';
 
       // 當不是新增商品時則切換成編輯商品 API
       if (!this.isNew) {
-        api = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/product/${this.tempProduct.id}`;
+        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/product/${this.tempProduct.id}`;
 
         httpMethod = 'patch';
       }
@@ -444,7 +443,7 @@ export default {
     delProduct() {
       this.isLoading = true;
 
-      const url = `${process.env.VUE_APP_APIPATH}/api/${this.uuid}/admin/ec/product/${this.tempProduct.id}`;
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/admin/ec/product/${this.tempProduct.id}`;
 
       this.$http.delete(url).then(() => {
         $('#delProductModal').modal('hide');
