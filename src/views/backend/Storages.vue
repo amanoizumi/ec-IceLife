@@ -131,9 +131,9 @@ export default {
       });
     },
     openModel(item) {
-      $('#deleteModal').modal('show');
-
-      this.tempData = { ...item };
+      // 等操作完資料再開啟視窗
+      this.tempCoupons = { ...item };
+      $('#delCouponModal').modal('show');
     },
     deleteData() {
       this.isLoading = true;

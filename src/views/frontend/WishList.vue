@@ -61,7 +61,7 @@
                     </button>
                   </td>
                   <td>
-                    <button href="#"
+                    <button type="button"
                             class="btn btn-outline-secondary btn-sm border-0"
                             @click.prevent="delWished(item.id)">
                       X
