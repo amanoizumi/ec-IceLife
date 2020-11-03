@@ -187,9 +187,6 @@
       </div>
       <!-- 優惠券活動結束 -->
 
-      <section>
-
-      </section>
       <!-- 前往頂部 -->
     <ScrollTopArrow></ScrollTopArrow>
   </div>

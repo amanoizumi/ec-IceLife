@@ -61,15 +61,6 @@
                     <CartIcon />
                   </router-link>
                 </li>
-                <li>
-                  <router-link
-                    class="nav-link text-light"
-                    to="/login"
-                  >
-                    <i class="fas fa-user-cog"></i>
-                    登入後台
-                  </router-link>
-                </li>
               </ul>
             </div>
           </nav>
@@ -91,10 +82,9 @@ export default {
     return {
     };
   },
-  methods: {
-  },
 };
 </script>
+
 <style lang="scss" scoped>
 .logo {
   color: #fff;

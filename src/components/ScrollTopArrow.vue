@@ -1,24 +1,50 @@
 <template>
-  <ScrollTopComponent>
-      <div class="btn-scroll btn-cyan text-light border-0 shadow">
-        <i class="fas fa-chevron-up d-flex" ></i>
-      </div>
-  </ScrollTopComponent>
+  <a @click="scrollTop" v-show="visible" class="bottom-right">
+    <div class="btn-scroll btn-cyan text-light border-0 shadow">
+      <i class="fas fa-chevron-up d-flex" ></i>
+    </div>
+  </a>
 </template>
 
 <script>
 
-import ScrollTopComponent from '@/components/ScrollTopComponent.vue';
-
 export default {
   name: 'ScrollTopArrow',
-  components: {
-    ScrollTopComponent,
+  data() {
+    return {
+      visible: false,
+    };
+  },
+  methods: {
+    scrollTop() {
+      this.intervalId = setInterval(() => {
+        if (window.pageYOffset === 0) {
+          clearInterval(this.intervalId);
+        }
+        window.scroll(0, window.pageYOffset - 50);
+      }, 10);
+    },
+    scrollListener() {
+      this.visible = window.scrollY > 150;
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', this.scrollListener);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.scrollListener);
   },
 };
 </script>
 
 <style lang="scss">
+.bottom-right {
+  position: fixed;
+  bottom: 45%;
+  right: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
 .btn-scroll {
     border-radius: 50%;
     background-color: #C2185B;

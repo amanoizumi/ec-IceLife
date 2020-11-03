@@ -155,8 +155,6 @@ export default {
       cart: {},
       cartTotal: 0,
       isLoading: false,
-      is_checked: false,
-      is_disabled: true,
     };
   },
   methods: {

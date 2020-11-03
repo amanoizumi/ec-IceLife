@@ -1,9 +1,3 @@
-<template>
-    <a @click="scrollTop" v-show="visible" class="bottom-right">
-        <slot></slot>
-    </a>
-</template>
-
 <script>
 export default {
   name: 'ScrollTopComponent',
@@ -43,5 +37,4 @@ export default {
   cursor: pointer;
   text-decoration: none;
 }
-
 </style>

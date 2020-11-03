@@ -42,10 +42,9 @@ export default {
     return {
     };
   },
-  methods: {
-  },
 };
 </script>
+
 <style lang="scss" scoped>
 .footer-list {
   list-style-type: none;
