@@ -32,5 +32,9 @@ export default {
       });
     },
   },
+  beforeDestroy() {
+    // 銷毀監聽
+    this.$bus.$off('update-total');
+  },
 };
 </script>

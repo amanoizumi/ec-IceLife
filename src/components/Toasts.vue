@@ -78,6 +78,10 @@ export default {
       $(`#${element}`).toast('hide');
     },
   },
+  beforeDestroy() {
+    // 銷毀監聽
+    this.$bus.$off('message:push');
+  },
 };
 </script>
 
