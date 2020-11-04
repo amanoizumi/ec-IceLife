@@ -29,7 +29,10 @@
           </h2>
           <div class="row py-4" data-aos="fade-up">
             <div class="col-lg-6 mb-3">
-              <a class="rotated d-block bg-white p-4" href="#" style="text-decoration:none">
+              <a class="rotated d-block bg-white p-4"
+                 @click.prevent="toCategory('甜入你心')"
+                 href="#"
+                 style="text-decoration:none">
                 <div class="d-flex">
                   <img class="imgsz" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/91fxEPvMLQLwgRhJf35uJt75GyN3Tzw0VSisbQFGlkrw0y7yT8XKxSRRM0QBqyAMHny0t89gBRRubqYwU62E2yfl3NfzT09UL1ZcX2ieNcvfeh5OuufjxpMmG4xT9rYx.jpg" alt="">
                   <div class="d-flex flex-column">
@@ -40,13 +43,19 @@
                       甜入你心系列 2018 奪得全國甜點金獎，
                       不論男女老少咸宜，喚起你的童年！
                     </p>
-                    <button type="button" class="btn btn-primary rounded adbtn">立即逛</button>
+                    <button type="button"
+                            class="btn btn-primary rounded adbtn"
+                            >立即逛
+                    </button>
                   </div>
                 </div>
               </a>
             </div>
             <div class="col-lg-6 mb-3">
-              <a class="rotated d-block bg-white p-4" href="#" style="text-decoration:none">
+              <a class="rotated d-block bg-white p-4"
+                 @click.prevent="toCategory('成熟午後')"
+                 href="#"
+                style="text-decoration:none">
                 <div class="d-flex">
                   <img class="imgsz" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/L1Ps9GdSyBypZSDYe98EjgMBgEm1m10IF4cUnChO5sorufYFhEllQa9y0lWhRzM3uhFCGYA8XFRf08oUMvIeAvd6v8BuOQOfBoijinH59XrAmKJDGCM97x2nnnqrmFMl.jpg" alt="">
                   <div class="d-flex flex-column">
@@ -57,8 +66,9 @@
                       工作累了，想要來點冰品嗎？
                       成熟午後系列冰品，讓你享有午後放鬆的時光。
                     </p>
-                    <button type="button" class="btn btn-primary rounded adbtn">
-                      放鬆去
+                    <button type="button"
+                            class="btn btn-primary rounded adbtn"
+                            >放鬆去
                     </button>
                   </div>
                 </div>
@@ -149,6 +159,14 @@ export default {
       copytempCoupon: '',
       copyResult: '',
     };
+  },
+  methods: {
+    toCategory(Name) {
+      this.$router.push({
+        name: '前台產品頁面',
+        params: { categoryName: Name },
+      });
+    },
   },
 };
 </script>
