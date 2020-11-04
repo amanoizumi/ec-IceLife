@@ -39,6 +39,11 @@ const routes = [
         component: () => import('../views/frontend/Story.vue'),
       },
       {
+        path: 'festival',
+        name: '優惠活動進行中',
+        component: () => import('../views/frontend/Festival.vue'),
+      },
+      {
         path: 'cart',
         name: '前台購物車',
         component: () => import('../views/frontend/Cart.vue'),

@@ -32,6 +32,13 @@
                 <li class="nav-item mr-2">
                   <router-link
                     class="nav-link text-light"
+                    :to="{ name: '優惠活動進行中'}"
+                  >
+                    <span class="star">★ </span>優惠活動進行中
+                  </router-link>
+                <li class="nav-item mr-2">
+                  <router-link
+                    class="nav-link text-light"
                     :to="{ name: '前台產品頁面'}"
                   >
                     產品列表

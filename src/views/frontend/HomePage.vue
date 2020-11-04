@@ -21,31 +21,6 @@
       </div>
       <!-- 首頁置頂圖結束 -->
 
-      <!-- 產品按鈕區開始 -->
-      <section>
-        <div class="container p-5">
-          <div class="row">
-            <div class="col">
-              <h2 class="subtitle text-center font-weight-bold">
-                今夏暢銷，冰鎮上市！
-              </h2>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="d-flex justify-content-center">
-                <router-link
-                class="btn btn-lg btn-outline-primary"
-                :to="{ name: '前台產品頁面'}"
-                >
-                來去逛逛
-                </router-link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- 商品展示圖開始 -->
       <section class="mb-4 bg-light">
         <div class="container py-5">
@@ -143,48 +118,15 @@
             <h2 class="font-weight-bold text-primary text-center mb-4">
               IceLife 週年慶活動進行中！
             </h2>
-            <button type="button"
-                    data-toggle="modal"
-                    data-target="#getCouponModal"
-                    @click="getCouponCode"
-                    class="btn btn-lg btn-cyan">立刻取得優惠券
-            </button>
+            <router-link
+              class="btn btn-lg btn-cyan"
+              :to="{ name: '優惠活動進行中'}"
+            >
+              立刻取得優惠券
+            </router-link>
           </div>
         </div>
       </section>
-      <!-- couponModal -->
-      <div class="modal fade"
-           id="getCouponModal"
-           tabindex="-1"
-           role="dialog"
-           aria-labelledby="getCouponModalLabel"
-           aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="getCouponModalLabel">獲得優惠券號碼</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body py-5">
-              <h3>
-                 號碼：{{ tempCoupon }}
-              </h3>
-              <button type="button"
-                      class="btn btn-primary"
-                      @click.prevent="copyCoupon">
-                複製
-              </button>
-              <input type="hidden" id="temp-coupon" :value="tempCoupon">
-              <span class="ml-2" v-text="copyResult"></span>
-              </div>
-              <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉視窗</button>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- 優惠券活動結束 -->
 
       <!-- 前往頂部 -->
@@ -207,26 +149,6 @@ export default {
       copytempCoupon: '',
       copyResult: '',
     };
-  },
-  methods: {
-    getCouponCode() { // 從陣列中亂數取一
-      const arrIndex = Math.floor(Math.random() * this.coupon.length);
-      this.tempCoupon = this.coupon[arrIndex];
-      this.copyResult = '';
-    }, // 一鍵複製優惠券
-    copyCoupon() {
-      const codeToCopy = document.querySelector('#temp-coupon');
-      codeToCopy.setAttribute('type', 'text');
-      codeToCopy.select();
-      try {
-        const successful = document.execCommand('copy');
-        this.copyResult = successful ? '優惠券號碼複製成功！' : '優惠券號碼複製失敗';
-      } catch (err) {
-        this.copyResult = '無法複製';
-      }
-      codeToCopy.setAttribute('type', 'hidden');
-      window.getSelection().removeAllRanges();
-    },
   },
 };
 </script>

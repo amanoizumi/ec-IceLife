@@ -41,7 +41,7 @@
           <!-- 購物車標題結束 -->
 
           <!-- 購物車內容開始 -->
-          <div class="mb-5" v-if="cart.length > 0">
+          <div class="mb-1" v-if="cart.length > 0">
             <div class="row">
               <div class="col-md-8 col-sm-12 mb-4">
                 <div class="row font-weight-bold border-bottom border-gray pb-2">
@@ -120,25 +120,25 @@
                     v-if="cart.length > 0" >確認訂單
                   </router-link>
                 </div>
-                <div class="d-flex justify-content-between">
-                  <router-link
-                    class="btn btn-lg btn-cyan"
-                    :to="{ name: '前台產品頁面'}"
-                  >
-                  <i class="fas fa-arrow-circle-left"></i>
-                  <span> 繼續購物</span>
-                  </router-link>
-                  <div class="text-right">
-                    <button type="button" v-if="cart.length > 0"
-                            class="btn btn-lg btn-outline-danger" @click="removeAllCartItem()">
-                    <i class="far fa-trash-alt"> 刪除所有品項</i>
-                    </button>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-           <!-- 購物車內容結束 -->
+          <!-- 購物車內容結束 -->
+          <div class="d-flex justify-content-between">
+            <router-link
+              class="btn btn-lg btn-outline-cyan"
+              :to="{ name: '前台產品頁面'}"
+            >
+            <i class="fas fa-arrow-circle-left"></i>
+            <span> 繼續購物</span>
+            </router-link>
+            <div class="text-right">
+              <button type="button" v-if="cart.length > 0"
+                      class="btn btn-lg btn-outline-danger" @click="removeAllCartItem()">
+              <i class="far fa-trash-alt"> 刪除所有品項</i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
