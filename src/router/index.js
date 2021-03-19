@@ -4,9 +4,11 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [
+  // 前台頁面
   {
     path: '/',
     component: () => import('../views/frontend/layout/FrontLayout.vue'),
+    // 子元件陣列
     children: [
       {
         path: '',
@@ -55,11 +57,13 @@ const routes = [
       },
     ],
   },
+  // 登入頁面
   {
     path: '/login',
     name: 'Login',
     component: () => import('../views/frontend/Login.vue'),
   },
+  // 後台頁面
   {
     path: '/admin',
     name: 'Admin 頁面',
