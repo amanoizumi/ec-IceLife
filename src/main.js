@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import axios from 'axios';
-import VueAxios from 'vue-axios';
+import axios from 'axios'; // 主要 axios 套件
+import VueAxios from 'vue-axios'; // 將它轉為 Vue 的套件
 import jquery from 'jquery';
 import {
   ValidationObserver,
@@ -20,6 +20,7 @@ import './bus';
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import App from './App.vue';
+// Router
 import router from './router';
 import currencyFilter from './filters/currency';
 // import dateFilter from './filters/date';
@@ -50,6 +51,7 @@ localize('tw', zhTW);
 Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('ValidationProvider', ValidationProvider);
 
+// 輪播
 Vue.use(carousel);
 
 // 滾動效果
