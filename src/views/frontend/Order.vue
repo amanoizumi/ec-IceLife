@@ -206,37 +206,67 @@ export default {
       this.is_disabled = !(this.is_disabled);
     },
     useCouponCode() {
-      this.isLoading = true;
-      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/ec/coupon/search`;
-      this.$http.post(url, { code: this.coupon_code })
-        .then((res) => {
-          this.getCart();
-          this.coupon = res.data.data;
-          this.isLoading = false;
-          SweetAlert.fire({
-            text: '成功套入優惠卷',
-            icon: 'success',
-          });
-        })
-        .catch((err) => {
-          const errorData = err.response.data.errors;
-          if (errorData) {
-            errorData.code.forEach((errmsg) => {
+      let check = true;
+
+      if (this.cartTotal < 1111) {
+        SweetAlert.fire({
+          text: '消費金額不足，不能使用該優惠券',
+          icon: 'warning',
+        });
+        check = false;
+      } else if (this.cartTotal >= 1111 && this.cartTotal < 2199 && this.coupon_code !== 'ICELIFE9') {
+        SweetAlert.fire({
+          text: '消費金額只可使用 ICELIFE9 優惠券',
+          icon: 'warning',
+        });
+        check = false;
+      } else if (this.cartTotal >= 2199 && this.cartTotal < 3199 && this.coupon_code !== 'ICELIFE8') {
+        SweetAlert.fire({
+          text: '消費金額只可使用 ICELIFE8 優惠券',
+          icon: 'warning',
+        });
+        check = false;
+      } else if (this.cartTotal >= 3199 && this.cartTotal < 4000 && this.coupon_code !== 'ICELIFE7') {
+        SweetAlert.fire({
+          text: '消費金額只可使用 ICELIFE7 優惠券',
+          icon: 'warning',
+        });
+        check = false;
+      }
+
+      if (check) {
+        this.isLoading = true;
+        const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_UID}/ec/coupon/search`;
+        this.$http.post(url, { code: this.coupon_code })
+          .then((res) => {
+            this.getCart();
+            this.coupon = res.data.data;
+            this.isLoading = false;
+            SweetAlert.fire({
+              text: '成功套入優惠卷',
+              icon: 'success',
+            });
+          })
+          .catch((err) => {
+            const errorData = err.response.data.errors;
+            if (errorData) {
+              errorData.code.forEach((errmsg) => {
+                SweetAlert.fire({
+                  text: `${errmsg}`,
+                  icon: 'error',
+                });
+              });
+              this.isLoading = false;
+            } else {
+              const { message } = err.response.data;
               SweetAlert.fire({
-                text: `${errmsg}`,
+                title: `${message}`,
                 icon: 'error',
               });
-            });
-            this.isLoading = false;
-          } else {
-            const { message } = err.response.data;
-            SweetAlert.fire({
-              title: `${message}`,
-              icon: 'error',
-            });
-            this.isLoading = false;
-          }
-        });
+              this.isLoading = false;
+            }
+          });
+      }
     },
     creatOrder() {
       this.isLoading = true;

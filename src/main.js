@@ -22,8 +22,6 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 import App from './App.vue';
 import router from './router';
 import currencyFilter from './filters/currency';
-// import dateFilter from './filters/date';
-// Import stylesheet
 
 window.$ = jquery;
 
@@ -31,7 +29,6 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 Vue.filter('currency', currencyFilter);
-// Vue.filter('date', dateFilter);
 
 Vue.use(Loading);
 Vue.component('Loading', Loading);
