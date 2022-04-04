@@ -103,6 +103,7 @@ export default {
       this.$http.get(url)
         .then((res) => {
           this.products = res.data.data;
+          console.log(this.products);
           this.getWish();
           this.isLoading = false;
         })

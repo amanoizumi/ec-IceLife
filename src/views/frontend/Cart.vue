@@ -22,7 +22,7 @@
         <!-- 麵包屑結束 -->
         <div class="col-md-12">
           <!-- 無商品時顯示畫面開始 -->
-          <div v-if="cart.length == 0" class="noneitem text-center mb-4">
+          <div v-if="cart.length === 0" class="noneitem text-center mb-4">
             <h2 class="font-weight-bold mb-4">您的購物車還沒有任何商品！</h2>
               <i class="far fa-tired mb-5"></i><br>
               <router-link
@@ -124,7 +124,7 @@
             </div>
           </div>
           <!-- 購物車內容結束 -->
-          <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between"    v-if="cart.length !== 0">
             <router-link
               class="btn btn-lg btn-outline-cyan"
               :to="{ name: '前台產品頁面'}"

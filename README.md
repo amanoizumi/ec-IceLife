@@ -6,13 +6,13 @@
 npm install
 ```
 
-### 啟動專案
+## 啟動專案
 
 ```
 npm run serve
 ```
 
-### 編譯
+## 編譯
 
 ```
 npm run build
