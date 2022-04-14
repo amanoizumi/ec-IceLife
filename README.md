@@ -1,4 +1,4 @@
-# THE F2E 台灣旅遊景點-vue3-TaiWalk
+# 冰品電商-vue2-IceLife
 
 **[DEMO](https://amanoizumi.github.io/ec-IceLife/)**
 
